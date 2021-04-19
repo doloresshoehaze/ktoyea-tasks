@@ -109,14 +109,17 @@ class Tasks extends React.Component {
       switch (task.type) {
         case 'checkbox': {
           let correctCounter = 0;
+
           task.correctAnswer.forEach(ca => {
             if (value.includes(ca)) {
               correctCounter += 1;
             }
           })
+
           if (correctCounter === task.correctAnswer.length) {
             score += task.weight;
           }
+
           break;
         }
         default:
@@ -140,8 +143,11 @@ class Tasks extends React.Component {
         >
           На главную
           </Link>
-        {isSubmited ? <h2>Yor score is: {Math.ceil(score / this.topScore * 10)} points</h2> : <h2>Выберите правильный вариант</h2>}
-        {isSubmited ? null :
+        {isSubmited ?
+          <h2>Yor score is: {Math.ceil(score / this.topScore * 10)} points</h2> :
+          <h2>Выберите правильный вариант</h2>}
+        {isSubmited ?
+          null :
           <Formik
             initialValues={this.initialValues}
             onSubmit={(values, { setSubmitting }) => {
@@ -164,7 +170,12 @@ class Tasks extends React.Component {
                         <div className="answers">
                           {task.answers.map(answer => (
                             <label key={answer.id} className="answer" htmlFor={task.id + answer.id}>
-                              <Field name={task.id} id={task.id + answer.id} type="checkbox" checked={values[task.id].includes(answer.id)} value={answer.id}></Field>
+                              <Field
+                                name={task.id}
+                                id={task.id + answer.id}
+                                type="checkbox"
+                                checked={values[task.id].includes(answer.id)}
+                                value={answer.id}></Field>
                               {answer.name}
                             </label>
                           ))}
@@ -176,7 +187,11 @@ class Tasks extends React.Component {
                         <div className="answers">
                           {task.answers.map(answer => (
                             <label key={answer.id} className="answer" htmlFor={task.id + answer.id}>
-                              <Field name={task.id} id={task.id + answer.id} type="radio" checked={values[task.id] === answer.id} value={answer.id}></Field>
+                              <Field name={task.id}
+                                id={task.id + answer.id}
+                                type="radio"
+                                checked={values[task.id] === answer.id}
+                                value={answer.id}></Field>
                               {answer.name}
                             </label>
                           ))}
@@ -186,7 +201,10 @@ class Tasks extends React.Component {
                       return (<div key={task.id} className="task">
                         <h3>{index + 1}. {task.name}</h3>
                         <div className="answers">
-                          <Field type="text" placeholder={task.placeholder} id={task.id} value={values[task.id]}></Field>
+                          <Field type="text"
+                            placeholder={task.placeholder}
+                            id={task.id}
+                            value={values[task.id]}></Field>
                         </div>
                       </div>)
                     default:
