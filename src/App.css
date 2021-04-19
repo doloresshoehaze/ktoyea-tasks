@@ -4,13 +4,13 @@
 }
 
 .App-logo {
-  width: 30vh;
+  width: 30vmin;
   pointer-events: none;
-  margin-bottom: 10vh;
+  margin-bottom: 10vmin;
 }
 .App-header {
   height: 100%;
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
