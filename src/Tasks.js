@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import './Tasks.css';
 
 class Tasks extends React.Component {
+  state = {
+    isSubmited: false,
+    score: 0,
+  }
+
   get tasks() {
     return [
       {
@@ -62,7 +67,7 @@ class Tasks extends React.Component {
         id: 'third',
         type: 'text',
         placeholder: 'Labore veniam nulla fugiat quis ex aliquip laborum anim ipsum est.',
-        weight: 40,
+        weight: 70,
       }
     ]
   }
@@ -85,9 +90,11 @@ class Tasks extends React.Component {
     return init;
   }
 
-  state = {
-    isSubmited: false,
-    score: 0,
+  get topScore() {
+    return this.tasks.reduce((p, c) => {
+      p += c.weight;
+      return p;
+    }, 0);
   }
 
   submit(values) {
@@ -133,7 +140,7 @@ class Tasks extends React.Component {
         >
           На главную
           </Link>
-        {isSubmited ? <h2>Yor score is: {score} points</h2> : <h2>Выберите правильный вариант</h2>}
+        {isSubmited ? <h2>Yor score is: {Math.ceil(score / this.topScore * 10)} points</h2> : <h2>Выберите правильный вариант</h2>}
         {isSubmited ? null :
           <Formik
             initialValues={this.initialValues}

@@ -12,6 +12,10 @@
   align-items: flex-start;
 }
 
+.Tasks .answers {
+  margin-bottom: 3vmin;
+}
+
 .Tasks input[type="radio"],
 input[type="checkbox"] {
   margin-right: 1vmin;
@@ -41,4 +45,10 @@ input[type="checkbox"] {
   text-transform: capitalize;
   align-self: center;
   border-radius: 0.5vmin;
+  border: 0;
+  cursor: pointer;
+}
+
+.Tasks .button:hover {
+  box-shadow: 0 0 10px #61dafb;
 }
