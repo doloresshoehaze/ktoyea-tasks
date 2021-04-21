@@ -10,7 +10,7 @@ const basename = process.env.NODE_ENV === 'production' ? '/ktoyea-tasks/build/' 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename={basename}>
       <Switch>
         <Route path='/theory'>
           <Theory />
