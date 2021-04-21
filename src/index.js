@@ -10,13 +10,13 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route path='/theory' >
+        <Route path='/theory'>
           <Theory />
         </Route>
-        <Route path='/tasks' >
+        <Route path='/tasks'>
           <Tasks />
         </Route>
-        <Route path='/' >
+        <Route path='/'>
           <App />
         </Route>
       </Switch>

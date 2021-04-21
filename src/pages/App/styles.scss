@@ -8,6 +8,7 @@
   pointer-events: none;
   margin-bottom: 10vmin;
 }
+
 .App-header {
   height: 100%;
   display: flex;
@@ -18,13 +19,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
