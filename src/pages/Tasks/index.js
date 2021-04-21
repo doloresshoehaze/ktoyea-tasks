@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Tasks.css';
+import './styles.scss';
 
 class Tasks extends React.Component {
   state = {
@@ -62,11 +62,11 @@ class Tasks extends React.Component {
         ]
       },
       {
-        name: 'Elit Lorem esse veniam et consequat minim cupidatat officia quis do aliqua commodo ex.',
+        name: 'Elit Lorem esse veniam et minim cupidatat officia quis do aliqua commodo ex.',
+        text: 'Anim id exercitation cupidatat <input> minim consectetur officia.',
         correctAnswer: 'answer',
         id: 'third',
         type: 'text',
-        placeholder: 'Labore veniam nulla fugiat quis ex aliquip laborum anim ipsum est.',
         weight: 70,
       }
     ]
@@ -97,7 +97,7 @@ class Tasks extends React.Component {
     }, 0);
   }
 
-  submit(values) {
+  submit() {
     this.setState({ isSubmited: true });
   }
 
@@ -200,12 +200,16 @@ class Tasks extends React.Component {
                     case 'text':
                       return (<div key={task.id} className="task">
                         <h3>{index + 1}. {task.name}</h3>
-                        <div className="answers">
-                          <Field type="text"
-                            placeholder={task.placeholder}
-                            id={task.id}
-                            value={values[task.id]}></Field>
-                        </div>
+                        <p className="answer-text">
+                          {task.text.split('<input>')[0]}
+                          <div className="input-wrap">
+                            <Field type="text"
+                              id={task.id}
+                              value={values[task.id]}></Field>
+                            <p className="fake">{task.correctAnswer.replace(/[A-Za-z]/ig, 'A')}</p>
+                          </div>
+                          {task.text.split('<input>')[1]}
+                        </p>
                       </div>)
                     default:
                       return null;

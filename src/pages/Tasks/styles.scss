@@ -1,0 +1,86 @@
+.Tasks {
+  .task {
+    h3 {
+      margin: 2vmin 0;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .answer {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .answers {
+    margin-bottom: 3vmin;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: 1vmin;
+    position: relative;
+    top: 1vmin;
+    cursor: pointer;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  .input-wrap {
+    display: inline-flex;
+    position: relative;
+  }
+
+  .input-wrap {
+    .fake {
+      margin: 0;
+      padding: 0;
+      visibility: hidden;
+      padding: 0vmin 1vmin;
+    }
+  }
+
+  .input-wrap {
+    input[type="text"] {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      padding: 0vmin 1vmin;
+      box-sizing: border-box;
+      outline: none;
+      text-align: center;
+      color: white;
+      font-size: inherit;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid #61dafb;
+    }
+  }
+
+  .button {
+    margin: 5vmin 0;
+    height: 3vmin;
+    padding: 2vmin;
+    font-size: 2vmin;
+    background-color: #61dafb;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    align-self: center;
+    border-radius: 0.5vmin;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 10px #61dafb;
+    }
+  }
+}

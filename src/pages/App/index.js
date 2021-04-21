@@ -1,5 +1,5 @@
-import logo from './images/flag.png';
-import './App.css';
+import logo from '../../images/flag.png';
+import './styles.scss';
 import { Link } from 'react-router-dom';
 
 
