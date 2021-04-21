@@ -137,96 +137,98 @@ class Tasks extends React.Component {
 
     return (
       <div className="Tasks">
-        <Link
-          className="App-link"
-          to=""
-        >
-          На главную
-          </Link>
-        {isSubmited ?
-          <h2>Yor score is: {Math.ceil(score / this.topScore * 10)} points</h2> :
-          <h2>Выберите правильный вариант</h2>}
-        {isSubmited ?
-          null :
-          <Formik
-            initialValues={this.initialValues}
-            onSubmit={(values, { setSubmitting }) => {
-              this.submit(values);
-              this.checkAnwers(values);
-              setSubmitting(false);
-            }}
+        <div className="tasks-wrap">
+          <Link
+            className="App-link"
+            to=""
           >
-            {({
-              values,
-              handleSubmit,
-              isSubmitting,
-            }) => (
-              <Form className="form" onSubmit={handleSubmit}>
-                {this.tasks.map((task, index) => {
-                  switch (task.type) {
-                    case 'checkbox':
-                      return (<div key={task.id} className="task">
-                        <h3>{index + 1}. {task.name}</h3>
-                        <div className="answers">
-                          {task.answers.map(answer => (
-                            <label key={answer.id} className="answer" htmlFor={task.id + answer.id}>
-                              <Field
-                                name={task.id}
-                                id={task.id + answer.id}
-                                type="checkbox"
-                                checked={values[task.id].includes(answer.id)}
-                                value={answer.id}></Field>
-                              {answer.name}
-                            </label>
-                          ))}
-                        </div>
-                      </div>)
-                    case 'radio':
-                      return (<div key={task.id} className="task">
-                        <h3>{index + 1}. {task.name}</h3>
-                        <div className="answers">
-                          {task.answers.map(answer => (
-                            <label key={answer.id} className="answer" htmlFor={task.id + answer.id}>
-                              <Field name={task.id}
-                                id={task.id + answer.id}
-                                type="radio"
-                                checked={values[task.id] === answer.id}
-                                value={answer.id}></Field>
-                              {answer.name}
-                            </label>
-                          ))}
-                        </div>
-                      </div>)
-                    case 'text':
-                      return (<div key={task.id} className="task">
-                        <h3>{index + 1}. {task.name}</h3>
-                        <p className="answer-text">
-                          {task.text.split('<input>')[0]}
-                          <div className="input-wrap">
-                            <Field type="text"
-                              id={task.id}
-                              value={values[task.id]}></Field>
-                            <p className="fake">{task.correctAnswer.replace(/[A-Za-z]/ig, 'A')}</p>
+            На главную
+          </Link>
+          {
+            isSubmited ?
+              <h2>Yor score is: {Math.ceil(score / this.topScore * 10)} points</h2> :
+              <h2>Выберите правильный вариант</h2>
+          }
+          {isSubmited ?
+            null :
+            <Formik
+              initialValues={this.initialValues}
+              onSubmit={(values, { setSubmitting }) => {
+                this.submit(values);
+                this.checkAnwers(values);
+                setSubmitting(false);
+              }}
+            >
+              {({
+                values,
+                handleSubmit,
+                isSubmitting,
+              }) => (
+                <Form className="form" onSubmit={handleSubmit}>
+                  {this.tasks.map((task, index) => {
+                    switch (task.type) {
+                      case 'checkbox':
+                        return (<div key={task.id} className="task">
+                          <h3>{index + 1}. {task.name}</h3>
+                          <div className="answers">
+                            {task.answers.map(answer => (
+                              <label key={answer.id} className="answer" htmlFor={task.id + answer.id}>
+                                <Field
+                                  name={task.id}
+                                  id={task.id + answer.id}
+                                  type="checkbox"
+                                  checked={values[task.id].includes(answer.id)}
+                                  value={answer.id}></Field>
+                                {answer.name}
+                              </label>
+                            ))}
                           </div>
-                          {task.text.split('<input>')[1]}
-                        </p>
-                      </div>)
-                    default:
-                      return null;
-                  }
-                })}
-                <button type="submit" className="button" disabled={isSubmitting}>
-                  SUBMIT
+                        </div>)
+                      case 'radio':
+                        return (<div key={task.id} className="task">
+                          <h3>{index + 1}. {task.name}</h3>
+                          <div className="answers">
+                            {task.answers.map(answer => (
+                              <label key={answer.id} className="answer" htmlFor={task.id + answer.id}>
+                                <Field name={task.id}
+                                  id={task.id + answer.id}
+                                  type="radio"
+                                  checked={values[task.id] === answer.id}
+                                  value={answer.id}></Field>
+                                {answer.name}
+                              </label>
+                            ))}
+                          </div>
+                        </div>)
+                      case 'text':
+                        return (<div key={task.id} className="task">
+                          <h3>{index + 1}. {task.name}</h3>
+                          <span className="answer-text">
+                            {task.text.split('<input>')[0]}
+                            <div className="input-wrap">
+                              <Field type="text"
+                                id={task.id}
+                                value={values[task.id]}></Field>
+                              <p className="fake">{task.correctAnswer.replace(/[A-Za-z]/ig, 'A')}</p>
+                            </div>
+                            {task.text.split('<input>')[1]}
+                          </span>
+                        </div>)
+                      default:
+                        return null;
+                    }
+                  })}
+                  <button type="submit" className="button" disabled={isSubmitting}>
+                    SUBMIT
               </button>
-              </Form>
-            )}
-          </Formik>
-        }
-      </div >
+                </Form>
+              )}
+            </Formik>
+          }
+        </div>
+      </div>
     );
   }
 }
-
-
 
 export default Tasks;
