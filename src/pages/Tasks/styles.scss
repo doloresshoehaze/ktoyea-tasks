@@ -31,6 +31,7 @@
     position: relative;
     top: 1vh;
     cursor: pointer;
+    flex-shrink: 0;
   }
 
   label {
@@ -55,12 +56,13 @@
     input[type="text"] {
       position: absolute;
       width: 100%;
+      height: 100%;
       top: 0;
       padding: 0vh 1vh;
       box-sizing: border-box;
       outline: none;
       text-align: center;
-      color: white;
+      color: #61dafb;
       font-size: inherit;
       background: none;
       border: 0;
