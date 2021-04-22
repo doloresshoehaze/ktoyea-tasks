@@ -11,31 +11,31 @@ class Tasks extends React.Component {
 
   get tasks() {
     return [
-      {
-        name: 'Et ullamco ad aliquip culpa excepteur amet labore nisi laboris',
-        correctAnswer: ['0', '2'],
-        id: 'first',
-        type: 'checkbox',
-        weight: 10,
-        answers: [
-          {
-            name: 'Ullamco irure quis deserunt officia est.',
-            id: '0',
-          },
-          {
-            name: 'Elit duis fugiat in cupidatat amet sint aliqua.',
-            id: '1',
-          },
-          {
-            name: 'Eu nulla irure dolore elit laboris exercitation sit do reprehenderit esse sunt voluptate.',
-            id: '2',
-          },
-          {
-            name: 'Consequat incididunt non ea commodo sint ut ad ea enim veniam cillum culpa.',
-            id: '3',
-          },
-        ]
-      },
+      // {
+      //   name: 'Et ullamco ad aliquip culpa excepteur amet labore nisi laboris',
+      //   correctAnswer: ['0', '2'],
+      //   id: 'first',
+      //   type: 'checkbox',
+      //   weight: 10,
+      //   answers: [
+      //     {
+      //       name: 'Ullamco irure quis deserunt officia est.',
+      //       id: '0',
+      //     },
+      //     {
+      //       name: 'Elit duis fugiat in cupidatat amet sint aliqua.',
+      //       id: '1',
+      //     },
+      //     {
+      //       name: 'Eu nulla irure dolore elit laboris exercitation sit do reprehenderit esse sunt voluptate.',
+      //       id: '2',
+      //     },
+      //     {
+      //       name: 'Consequat incididunt non ea commodo sint ut ad ea enim veniam cillum culpa.',
+      //       id: '3',
+      //     },
+      //   ]
+      // },
       {
         name: 'Exercitation exercitation nostrud Lorem sit Lorem consectetur labore nostrud minim.',
         correctAnswer: '2',
@@ -64,7 +64,7 @@ class Tasks extends React.Component {
       {
         name: 'Elit Lorem esse veniam et minim cupidatat officia quis do aliqua commodo ex.',
         text: 'Anim id exercitation cupidatat <input> minim consectetur officia.',
-        correctAnswer: 'answer',
+        correctAnswer: ['answer', 'answwer'],
         id: 'third',
         type: 'text',
         weight: 70,
@@ -122,6 +122,10 @@ class Tasks extends React.Component {
 
           break;
         }
+        case 'text':
+          if (task.correctAnswer.includes(value)) {
+            score += task.weight;
+          }
         default:
           if (task.correctAnswer === value) {
             score += task.weight;
@@ -146,8 +150,8 @@ class Tasks extends React.Component {
           </Link>
           {
             isSubmited ?
-              <h2>Yor score is: {Math.ceil(score / this.topScore * 10)} points</h2> :
-              <h2>Выберите правильный вариант</h2>
+              <h2>Ваш результат: {Math.ceil(score / this.topScore * 10)} баллов</h2> :
+              <h2>Выберите правильный вариант и заполните пропуски</h2>
           }
           {isSubmited ?
             null :
@@ -209,7 +213,7 @@ class Tasks extends React.Component {
                               <Field type="text"
                                 id={task.id}
                                 value={values[task.id]}></Field>
-                              <p className="fake">{task.correctAnswer.replace(/[A-Za-z]/ig, 'A')}</p>
+                              <p className="fake">{task.correctAnswer.sort((a, b) => a.length - b.length)[0].replace(/[A-Za-z]/ig, 'A')}</p>
                             </div>
                             {task.text.split('<input>')[1]}
                           </span>
@@ -219,7 +223,7 @@ class Tasks extends React.Component {
                     }
                   })}
                   <button type="submit" className="button" disabled={isSubmitting}>
-                    SUBMIT
+                    Получить результат
               </button>
                 </Form>
               )}
