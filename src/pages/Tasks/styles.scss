@@ -1,0 +1,94 @@
+.Tasks {
+  display: flex;
+  justify-content: center;
+  .tasks-wrap {
+    max-width: 1024px;
+  }
+
+  .task {
+    h3 {
+      margin: 2vh 0;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .answer {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .answers {
+    margin-bottom: 3vh;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: 1vh;
+    position: relative;
+    top: 1vh;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  .input-wrap {
+    display: inline-flex;
+    position: relative;
+  }
+
+  .input-wrap {
+    .fake {
+      margin: 0;
+      padding: 0;
+      visibility: hidden;
+      padding: 0vh 1vh;
+    }
+  }
+
+  .input-wrap {
+    input[type="text"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      padding: 0vh 1vh;
+      box-sizing: border-box;
+      outline: none;
+      text-align: center;
+      color: #61dafb;
+      font-size: inherit;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid #61dafb;
+    }
+  }
+
+  .button {
+    margin: 5vh 0;
+    // height: 3vh;
+    padding: 1vh 2vh;
+    font-size: 2.5vh;
+    background-color: #61dafb;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    align-self: center;
+    border-radius: 0.5vh;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 10px #61dafb;
+    }
+  }
+}

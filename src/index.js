@@ -1,23 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './index.css';
-import App from './App';
-import Theory from './Theory';
-import Tasks from './Tasks';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './index.scss';
+import App from './pages/App';
+import Theory from './pages/Theory';
+import Tasks from './pages/Tasks';
+
+const basename = process.env.NODE_ENV === 'production' ? '/ktoyea-tasks/build/' : undefined;
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename={basename}>
       <Switch>
-        <Route path='/theory' >
+        <Route path='/theory'>
           <Theory />
         </Route>
-        <Route path='/tasks' >
+        <Route path='/tasks'>
           <Tasks />
         </Route>
-        <Route path='/' >
+        <Route path='/'>
           <App />
         </Route>
       </Switch>
@@ -25,11 +26,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-
-
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
