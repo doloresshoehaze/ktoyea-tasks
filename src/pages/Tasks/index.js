@@ -41,7 +41,7 @@ class Tasks extends React.Component {
         correctAnswer: '2',
         id: 'second',
         type: 'radio',
-        weight: 20,
+        weight: 10,
         answers: [
           {
             name: 'Ullamco in enim ullamco et nisi voluptate sunt.',
@@ -63,11 +63,11 @@ class Tasks extends React.Component {
       },
       {
         name: 'Elit Lorem esse veniam et minim cupidatat officia quis do aliqua commodo ex.',
-        text: 'Anim id exercitation cupidatat <input> minim consectetur officia.',
-        correctAnswer: ['answer', 'answwer'],
+        text: 'un poète rêveur - une personne',
+        correctAnswer: ['reveuse', 'rêveuse'],
         id: 'third',
         type: 'text',
-        weight: 70,
+        weight: 10,
       }
     ]
   }

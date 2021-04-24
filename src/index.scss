@@ -30,8 +30,17 @@ body {
 .h-green {
   color: rgb(6, 156, 6);
   font-weight: bold;
+
 }
 
+.h-red {
+  color: rgb(238, 66, 43);
+  font-weight: bold;
+}
+.h-blue {
+  color: rgb(49, 248, 255);
+  font-weight: bold;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

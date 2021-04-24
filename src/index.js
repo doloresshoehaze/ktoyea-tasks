@@ -6,11 +6,10 @@ import App from './pages/App';
 import Theory from './pages/Theory';
 import Tasks from './pages/Tasks';
 
-const basename = process.env.NODE_ENV === 'production' ? '/ktoyea-tasks/build/' : undefined;
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename={basename}>
+    <Router>
       <Switch>
         <Route path='/theory'>
           <Theory />
