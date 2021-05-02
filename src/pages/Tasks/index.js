@@ -243,11 +243,17 @@ class Tasks extends React.Component {
           {
             isSubmited ?
               <h2>Ваш результат: {Math.ceil(score / this.topScore * 10)} баллов</h2> :
-              <h2>Выберите правильный вариант и заполните пропуски</h2>
+              <h2>Выберите правильный вариант </h2>
           }
           {
             isSubmited && !isMinimumScoreGayned ?
-              <h2>Вернитесь к теории: </h2> :
+              <h3>
+                <Link
+                  className="App-link"
+                  to="/theory"
+                >
+                  Вернитесь к теории!
+            </Link> </h3> :
               null
           }
           {isSubmited ?
