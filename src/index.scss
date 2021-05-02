@@ -1,6 +1,8 @@
 body {
   background-color: #282c34;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -20,6 +22,7 @@ body {
 @media (max-width: 1024px) {
   body {
     padding: 5vh;
+    min-height: 100vh;
   }
 }
 

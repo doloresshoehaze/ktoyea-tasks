@@ -120,7 +120,7 @@ class Tasks extends React.Component {
 
       {
         name: 'Заполните пропуски:',
-        text: 'un poète rêveur - une personne',
+        text: 'un poète rêveur - une personne <input>',
         correctAnswer: ['reveuse', 'rêveuse'],
         id: 'third',
         type: 'text',
@@ -128,7 +128,7 @@ class Tasks extends React.Component {
         // orderNumber: 7,
       },
       {
-        text: 'un garçon gentil - une fille',
+        text: 'un garçon gentil - une fille <input>',
         correctAnswer: ['gentille'],
         id: 'uno',
         type: 'text',
@@ -136,7 +136,7 @@ class Tasks extends React.Component {
       },
       {
 
-        text: 'l’esprit créateur - l’imagination',
+        text: 'l’esprit créateur - l’imagination <input>',
         correctAnswer: ['créateurice', 'creatrice'],
         id: 'dos',
         type: 'text',
@@ -144,7 +144,7 @@ class Tasks extends React.Component {
       },
       {
 
-        text: 'un ami personnel - une amie',
+        text: 'un ami personnel - une amie <input>',
         correctAnswer: ['personnelle'],
         id: 'tres',
         type: 'text',
@@ -152,7 +152,7 @@ class Tasks extends React.Component {
       },
       {
 
-        text: 'un anneau précieux - une bague',
+        text: 'un anneau précieux - une bague <input>',
         correctAnswer: ['précieuse', 'precieuse'],
         id: 'cuatro',
         type: 'text',
