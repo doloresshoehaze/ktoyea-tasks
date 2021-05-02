@@ -213,7 +213,7 @@ class Tasks extends React.Component {
           break;
         }
         case 'text':
-          if (task.correctAnswer.includes(value)) {
+          if (task.correctAnswer.includes(value.toLowerCase())) {
             score += task.weight;
           }
           break;
