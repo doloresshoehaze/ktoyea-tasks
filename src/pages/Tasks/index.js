@@ -6,69 +6,159 @@ import './styles.scss';
 class Tasks extends React.Component {
   state = {
     isSubmited: false,
+    isMinimumScoreGayned: true,
     score: 0,
   }
 
   get tasks() {
     return [
-      // {
-      //   name: 'Et ullamco ad aliquip culpa excepteur amet labore nisi laboris',
-      //   correctAnswer: ['0', '2'],
-      //   id: 'first',
-      //   type: 'checkbox',
-      //   weight: 10,
-      //   answers: [
-      //     {
-      //       name: 'Ullamco irure quis deserunt officia est.',
-      //       id: '0',
-      //     },
-      //     {
-      //       name: 'Elit duis fugiat in cupidatat amet sint aliqua.',
-      //       id: '1',
-      //     },
-      //     {
-      //       name: 'Eu nulla irure dolore elit laboris exercitation sit do reprehenderit esse sunt voluptate.',
-      //       id: '2',
-      //     },
-      //     {
-      //       name: 'Consequat incididunt non ea commodo sint ut ad ea enim veniam cillum culpa.',
-      //       id: '3',
-      //     },
-      //   ]
-      // },
       {
-        name: 'Exercitation exercitation nostrud Lorem sit Lorem consectetur labore nostrud minim.',
+        name: 'Cette route est très (dangereux).',
         correctAnswer: '2',
         id: 'second',
         type: 'radio',
         weight: 10,
         answers: [
           {
-            name: 'Ullamco in enim ullamco et nisi voluptate sunt.',
+            name: 'dangereux',
             id: '0',
           },
           {
-            name: 'Dolor voluptate duis sunt laboris culpa consequat in deserunt nisi.',
+            name: 'dangereuxe',
             id: '1',
           },
           {
-            name: 'Esse nulla qui fugiat et nostrud cillum excepteur ea.',
+            name: 'dangereuse',
             id: '2',
-          },
-          {
-            name: 'Aliqua exercitation consequat do minim.',
-            id: '3',
           },
         ]
       },
       {
-        name: 'Elit Lorem esse veniam et minim cupidatat officia quis do aliqua commodo ex.',
+        name: 'Cette nouvelle est (faux).',
+        correctAnswer: '0',
+        id: 'prim',
+        type: 'radio',
+        weight: 10,
+        answers: [
+          {
+            name: 'fausse',
+            id: '0',
+          },
+          {
+            name: 'faux',
+            id: '1',
+          },
+          {
+            name: 'fause',
+            id: '2',
+          },
+        ]
+      },
+      {
+        name: 'Ma voisine est  (curieux) et (indiscret).',
+        correctAnswer: '0',
+        id: 'duo',
+        type: 'radio',
+        weight: 10,
+        answers: [
+          {
+            name: 'curieuse, indiscrète',
+            id: '0',
+          },
+          {
+            name: 'curieuxe, indiscrete',
+            id: '1',
+          },
+          {
+            name: 'curieuse, indiscrette',
+            id: '2',
+          },
+        ]
+      },
+      {
+        name: "Cette fille n'est pas très(franc); elle est(menteur).",
+        correctAnswer: '1',
+        id: 'trio',
+        type: 'radio',
+        weight: 10,
+        answers: [
+          {
+            name: 'franche, menteure',
+            id: '0',
+          },
+          {
+            name: 'franche, menteuse',
+            id: '1',
+          },
+          {
+            name: 'franche, mentrice',
+            id: '2',
+          },
+        ]
+      },
+      {
+        name: 'Je vous présente mon (vieux)  ami Pascal.',
+        correctAnswer: '1',
+        id: 'quatro',
+        type: 'radio',
+        weight: 10,
+        answers: [
+          {
+            name: 'vieux',
+            id: '0',
+          },
+          {
+            name: 'vieil',
+            id: '1',
+          },
+          {
+            name: 'vieul',
+            id: '2',
+          },
+        ]
+      },
+
+      {
+        name: 'Заполните пропуски:',
         text: 'un poète rêveur - une personne',
         correctAnswer: ['reveuse', 'rêveuse'],
         id: 'third',
         type: 'text',
         weight: 10,
+        // orderNumber: 7,
+      },
+      {
+        text: 'un garçon gentil - une fille',
+        correctAnswer: ['gentille'],
+        id: 'uno',
+        type: 'text',
+        weight: 10,
+      },
+      {
+
+        text: 'l’esprit créateur - l’imagination',
+        correctAnswer: ['créateurice', 'creatrice'],
+        id: 'dos',
+        type: 'text',
+        weight: 10,
+      },
+      {
+
+        text: 'un ami personnel - une amie',
+        correctAnswer: ['personnelle'],
+        id: 'tres',
+        type: 'text',
+        weight: 10,
+      },
+      {
+
+        text: 'un anneau précieux - une bague',
+        correctAnswer: ['précieuse', 'precieuse'],
+        id: 'cuatro',
+        type: 'text',
+        weight: 10,
       }
+
     ]
   }
 
@@ -126,18 +216,20 @@ class Tasks extends React.Component {
           if (task.correctAnswer.includes(value)) {
             score += task.weight;
           }
+          break;
         default:
           if (task.correctAnswer === value) {
             score += task.weight;
           }
       }
     })
+    const isMinimumScoreGayned = score / this.topScore >= 0.6;
 
-    this.setState({ score });
+    this.setState({ score, isMinimumScoreGayned });
   }
 
   render() {
-    const { isSubmited, score } = this.state;
+    const { isSubmited, score, isMinimumScoreGayned } = this.state;
 
     return (
       <div className="Tasks">
@@ -152,6 +244,11 @@ class Tasks extends React.Component {
             isSubmited ?
               <h2>Ваш результат: {Math.ceil(score / this.topScore * 10)} баллов</h2> :
               <h2>Выберите правильный вариант и заполните пропуски</h2>
+          }
+          {
+            isSubmited && !isMinimumScoreGayned ?
+              <h2>Вернитесь к теории: </h2> :
+              null
           }
           {isSubmited ?
             null :
@@ -206,7 +303,7 @@ class Tasks extends React.Component {
                         </div>)
                       case 'text':
                         return (<div key={task.id} className="task">
-                          <h3>{index + 1}. {task.name}</h3>
+                          {task.name ? <h3>{task.orderNumber || index + 1}. {task.name}</h3> : null}
                           <span className="answer-text">
                             {task.text.split('<input>')[0]}
                             <div className="input-wrap">
